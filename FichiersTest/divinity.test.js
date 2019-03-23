@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
-const {Divinity} = require('../divinity');
+const {Divinity} = require('../fichiersJeux/divinity');
 
 chai.use(chaiAsPromised);
 chai.should();
