@@ -1,0 +1,21 @@
+{
+  "name": "JS-jeu-2019",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "xo": {
+    "envs": [
+      "mocha"
+    ],
+    "space": 2,
+    "pretier": true
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
+}
