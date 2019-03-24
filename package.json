@@ -19,6 +19,7 @@
     "mocha": "^6.0.2"
   },
   "dependencies": {
-    "chai-as-promised": "^7.1.1"
+    "chai-as-promised": "^7.1.1",
+    "node-ask": "^1.0.1"
   }
 }
