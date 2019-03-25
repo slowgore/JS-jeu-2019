@@ -31,6 +31,14 @@ class City {
     this.gold_ = 0;
   }
 
+  getCorn() {
+    return this.corn_;
+  }
+
+  getGold() {
+    return this.gold_;
+  }
+
   showShit() {
     console.log(`${this.name_}: C ${this.corn_}, G ${this.gold_}`);
   }
@@ -48,7 +56,7 @@ class City {
     return Math.floor(Math.random() * (5000 - 50)) + 50;
   }
 
-  giveCorn(Corn) {
+  sellCorn(Corn) {
     // à mettre dans le index.js if (Corn < this.corn_)
     if (Corn < this.cornToBuy) {
       this.corn_ -= Corn;
@@ -61,11 +69,17 @@ class City {
     }
   }
 
-  getCorn(Corn) {
+  buyCorn(Corn) {
     if (Corn < this.cornToSell) {
-      this.gold_ -= Corn * this.goldForCorn;
-      this.corn_ += Corn;
-      this.cornToSell -= Corn
+      if ((this.gold_ - Corn * this.goldForCorn) >= 0) {
+        this.gold_ -= Corn * this.goldForCorn;
+        this.corn_ += Corn;
+        this.cornToSell -= Corn;
+      } else {
+        this.corn_ += parseInt(this.gold_/this.goldForCorn);
+        this.cornToSell -= parseInt(this.gold_/this.goldForCorn);
+        this.gold_ -= parseInt(this.gold_/this.goldForCorn) * this.goldForCorn;
+      }
     } else {
       this.gold_ -= this.cornToSell * this.goldForCorn;
       this.corn_ += this.cornToSell;

@@ -2,7 +2,12 @@ const prompt = require('node-ask').prompt;
 const confirm = require('node-ask').confirm;
 const {City} = require('./fichiersJeux/city');
 
+const isNumeric = (str) => {
+  return str.match("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+};
+
 const tradeMdenu = async city1 => {
+  let b = 0;
   console.log('- - -TRADE MENU- - - ');
   console.log('- - -What\'s your next action ?- - - ');
   console.log(' \t--> 1 : Sell corn');
@@ -13,13 +18,41 @@ const tradeMdenu = async city1 => {
       console.log('You have selected option ', answer1);
       switch (answer1) {
         case '1':
-          console.log('You have selected option 1');
-          console.log('Current ');
-
+          console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
+          console.log('Other city buy : ' + city1.cornToBuy + ' Corn.');
+          console.log(city1.goldForCorn.toString() + ' gold for 1 Corn.');
+          while (true) {
+            await prompt('How many Corn would you like to Sell ? : ').then(
+              async answer2 => {
+                if (isNumeric(answer2)) {
+                  city1.sellCorn(Number(answer2));
+                  b = 1;
+                } else {
+                  console.log('Put a Number !');
+                }
+              });
+            if (b == 1)
+              break;
+          }
           // Ajout de fonction city1.sellCorn
           break;
         case '2':
-          console.log('You have selected option 2');
+          console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
+          console.log('Other city sell : ' + city1.cornToSell + ' Corn');
+          console.log(city1.goldForCorn.toString() + ' gold for 1 Corn');
+          while (true) {
+            await prompt('How many Corn would you like to buy ? : ').then(
+              async answer2 => {
+                if (isNumeric(answer2)) {
+                  city1.buyCorn(Number(answer2));
+                  b = 1;
+                } else {
+                  console.log('Put a Number !');
+                }
+              });
+            if (b == 1)
+              break;
+          }
           // Ajout de fonction city1.buyCorn
           break;
 
@@ -68,7 +101,6 @@ const game = async city1 => {
 
     await prompt('What is your choice ? : ').then(
       async answer => {
-        console.log('You have selected option ', answer);
 
         switch (answer) {
           case '1':
