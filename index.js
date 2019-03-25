@@ -14,17 +14,21 @@ const tradeMdenu = async () => {
       switch (answer1) {
         case '1':
           console.log('You have selected option 1');
+          console.log('Current ');
           // Ajout de fonction city1.sellCorn
           break;
         case '2':
           console.log('You have selected option 2');
           // Ajout de fonction city1.buyCorn
           break;
+
+        default:
+          break;
       }
 
       return confirm('');
     });
-}
+};
 
 const unitsMenu = async () => {
   console.log('- - -UNITS MENU- - - ');
@@ -42,11 +46,14 @@ const unitsMenu = async () => {
         case '2':
           // Ajout de fonction units.War
           break;
+
+        default:
+          break;
       }
 
       return confirm('');
     });
-}
+};
 
 const game = async city1 => {
   let death = false;
