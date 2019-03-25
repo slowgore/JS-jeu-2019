@@ -2,7 +2,7 @@ const prompt = require('node-ask').prompt;
 const confirm = require('node-ask').confirm;
 const {City} = require('./fichiersJeux/city');
 
-const tradeMdenu = async () => {
+const tradeMdenu = async city1 => {
   console.log('- - -TRADE MENU- - - ');
   console.log('- - -What\'s your next action ?- - - ');
   console.log(' \t--> 1 : Sell corn');
@@ -15,6 +15,7 @@ const tradeMdenu = async () => {
         case '1':
           console.log('You have selected option 1');
           console.log('Current ');
+
           // Ajout de fonction city1.sellCorn
           break;
         case '2':
@@ -30,7 +31,7 @@ const tradeMdenu = async () => {
     });
 };
 
-const unitsMenu = async () => {
+const unitsMenu = async city1 => {
   console.log('- - -UNITS MENU- - - ');
   console.log('- - -What\'s your next action ?- - - ');
   console.log(' \t--> 1 : Buy new units');
@@ -71,12 +72,12 @@ const game = async city1 => {
 
         switch (answer) {
           case '1':
-            await tradeMdenu();
+            await tradeMdenu(city1);
             break;
 
           case '2':
             console.clear();
-            await unitsMenu();
+            await unitsMenu(city1);
             break;
 
           case '3':
@@ -88,7 +89,7 @@ const game = async city1 => {
           default:
             console.log('Wrong choice, earth collapsed');
         }
-        return confirm('');
+        // return confirm('');
       }
     );
   }
