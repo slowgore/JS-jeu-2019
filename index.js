@@ -2,8 +2,8 @@ const prompt = require('node-ask').prompt;
 const confirm = require('node-ask').confirm;
 const {City} = require('./fichiersJeux/city');
 
-const isNumeric = (str) => {
-  return str.match("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+const isNumeric = str => {
+  return str.match('-?\\d+(\\.\\d+)?');  //match a number with optional '-' and decimal.
 };
 
 const tradeMdenu = async city1 => {
@@ -15,7 +15,7 @@ const tradeMdenu = async city1 => {
 
   await prompt('What is your choice ? : ').then(
     async answer1 => {
-      console.log('You have selected option ', answer1);
+      console.log('You have selected option : ' + answer1);
       switch (answer1) {
         case '1':
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
@@ -39,7 +39,7 @@ const tradeMdenu = async city1 => {
         case '2':
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           console.log('Other city sell : ' + city1.cornToSell + ' Corn');
-          console.log(city1.goldForCorn.toString() + ' gold for 1 Corn');
+          console.log(city1.goldForCorn.toString() + ' Gold for 1 Corn');
           while (true) {
             await prompt('How many Corn would you like to buy ? : ').then(
               async answer2 => {
@@ -65,6 +65,7 @@ const tradeMdenu = async city1 => {
 };
 
 const unitsMenu = async city1 => {
+  let c = 0;
   console.log('- - -UNITS MENU- - - ');
   console.log('- - -What\'s your next action ?- - - ');
   console.log(' \t--> 1 : Buy new units');
@@ -72,13 +73,36 @@ const unitsMenu = async city1 => {
 
   await prompt('What is your choice ? : ').then(
     async answer2 => {
-      console.log('You have selected option ', answer2);
+      console.log('You have selected option ' + answer2);
       switch (answer2) {
         case '1':
-          // Ajout de fonction units.buyUnits
+          while(true) {
+            console.log('You have : ' + city1.units.length + ' warrior');
+            await prompt('How many Units would you like to buy ? : ').then(
+              async answer2 => {
+                if (isNumeric(answer2)) {
+                  city1.addUnits(Number(answer2));
+                  c = 1;
+                } else {
+                  console.log('Put a Number !');
+                }
+              });
+            if (c == 1)
+              break;
+          }
           break;
-        case '2':
-          // Ajout de fonction units.War
+
+          case '2':
+          //Calcul of opponent
+          if (city1.units.length >= 2 ) {
+            let opponent = Math.floor(Math.random() * Math.floor(this.units.length-2));
+            console.log('War is comming');
+            city1.war(Number(opponent));
+            city1.clearUnitsIfDead();
+          } else {
+            console.log('there is no opponent in front of you');
+            break;
+          }
           break;
 
         default:

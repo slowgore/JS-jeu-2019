@@ -1,11 +1,8 @@
-const {Divinity} = require('../fichiersJeux/divinity');
-const {City} = require('../fichiersJeux/city');
-
 class Units {
   constructor() {
-    this.divinity = new Divinity();
+    /*this.divinity = new Divinity();
     this.city = new City();
-    this.units = [];
+    this.units = [];*/
     this.life = setTimeout(() => {
       this.isDamaged = false;
       this.isAlmostDead = false;
@@ -30,7 +27,7 @@ class Units {
   }
 
 //AddUnits, war et clearDeadUnits seront peut etre a mettre dans city pour ajouter des untité a une ville et non au global
-  addUnits(qtyOfUnits) { //ici units est une liste this.units = [] a poser dans le main pour garder en memoire les unités créés ou pas
+  /*addUnits(qtyOfUnits) { //ici units est une liste this.units = [] a poser dans le main pour garder en memoire les unités créés ou pas
     return new Promise((resolve, reject) => {
       if (typeof qtyOfUnits === 'number') {
         setTimeout(() => {
@@ -70,7 +67,7 @@ class Units {
         reject(new Error(`Erreur : ${opponent} is not a number`));
       }
     });
-  }
+  }*/
 
 }
 
