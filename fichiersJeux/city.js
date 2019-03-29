@@ -97,7 +97,7 @@ class City {
             this.corn_ = this.corn_ - 50;
             this.units.push(new Units());
           }
-          console.log(`You've just create ${qtyOfUnits} units`);
+          console.log(`You've just create ${qtyOfUnits} units \n`);
         }, this.divinity_.timeFactor * 0.001 * qtyOfUnits);
       } else {
         reject(new Error(
