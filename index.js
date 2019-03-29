@@ -87,7 +87,7 @@ const unitsMenu = async city1 => {
                   city1.addUnits(Number(answer2));
                   c = 1;
                 } else {
-                  console.log('\nPut a Number equal or below ' + maxUnits);
+                  console.log('\nPut a Number equal or below : ' + maxUnits);
                 }
               });
             if (c == 1)
@@ -96,16 +96,16 @@ const unitsMenu = async city1 => {
           break;
 
           case '2':
-          //Calcul of opponent
-          if (city1.units.length >= 2 ) {
-            let opponent = Math.floor(Math.random() * Math.floor(this.units.length-2));
+          // Calcul of opponent
+          /*if (city1.units.length >= 2 ) {
+            //let opponent = Math.trunc(Math.random() * Math.floor(Number(this.units.length) - 2));*/
             console.log('War is comming');
-            city1.war(Number(opponent));
-            city1.clearUnitsIfDead();
-          } else {
-            console.log('there is no opponent in front of you');
+            city1.war(city1.units.length);
+            //city1.clearUnitsIfDead();
+          /*} else {
+            console.log('There is no opponent in front of you');
             break;
-          }
+          }*/
           break;
 
         default:

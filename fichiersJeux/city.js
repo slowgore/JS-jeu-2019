@@ -109,16 +109,12 @@ class City {
   }
 
   war(opponent) {
-    return new Promise((resolve, reject) => {
-      if (typeof opponent === 'number') {
-        setTimeout(() => {
-          this.units.forEach(this.units.fight());
-        }, (this.divinity_.timeFactor * Math.random() * 4000) + 2000);
-        this.clearUnitsIfDead();
-      } else {
-        reject(new Error(`Erreur : ${opponent} is not a number`));
-      }
-    });
+    let x = 0;
+    while(x<opponent){
+      this.units[x].fight();
+      //this.clearUnitsIfDead();
+      x++;
+    }
   }
 
 
