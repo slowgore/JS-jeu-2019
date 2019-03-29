@@ -93,15 +93,9 @@ class City {
       if (typeof qtyOfUnits === 'number') {
         setTimeout(() => {
           for (let i = 1; i <= qtyOfUnits; i++) {
-            if (this.gold_ < 100 || this.corn_ < 50) {
-              console.log(
-                `You can't create units, you only have ${this.gold_} 
-                gold and ${this.corn_} corn left`);
-            } else {
-              this.gold_ = this.gold_ - 100;
-              this.corn_ = this.corn_ - 50;
-              this.units.push(new Units());
-            }
+            this.gold_ = this.gold_ - 100;
+            this.corn_ = this.corn_ - 50;
+            this.units.push(new Units());
           }
           console.log(`You've just create ${qtyOfUnits} units`);
         }, this.divinity_.timeFactor * 0.001 * qtyOfUnits);

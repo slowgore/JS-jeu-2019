@@ -73,18 +73,21 @@ const unitsMenu = async city1 => {
 
   await prompt('What is your choice ? : ').then(
     async answer2 => {
-      console.log('You have selected option ' + answer2);
       switch (answer2) {
         case '1':
           while(true) {
+            let maxUnitsGold = city1.gold_% 100;
+            let maxUnitsCorn = city1.corn_% 50;
+            let maxUnits = Math.min(maxUnitsCorn, maxUnitsGold);
             console.log('You have : ' + city1.units.length + ' warrior');
+            console.log('you can create a maximum of : ' + maxUnits + ' Units');
             await prompt('How many Units would you like to buy ? : ').then(
               async answer2 => {
-                if (isNumeric(answer2)) {
+                if (isNumeric(answer2) && answer2 <= maxUnits) {
                   city1.addUnits(Number(answer2));
                   c = 1;
                 } else {
-                  console.log('Put a Number !');
+                  console.log('Put a Number equal or below ' + maxUnits);
                 }
               });
             if (c == 1)
