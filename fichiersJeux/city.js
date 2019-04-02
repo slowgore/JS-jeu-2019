@@ -4,7 +4,7 @@ const {Units} = require('./units');
 class City {
   constructor(name, divinityName) {
     this.name_ = name || 'UNKCITY';
-    this.divinityName_ = divinityName|| 'UNKDIVINITY';
+    this.divinityName_ = divinityName || 'UNKDIVINITY';
     this.divinity_ = new Divinity(this.divinityName_);
     this.units = [];
     this.corn_ = 1000;
@@ -33,14 +33,14 @@ class City {
     this.gold_ = 0;
   }
 
-  giveCorn(s){
+  giveCorn(s) {
     this.divinity_.offeringCorn(s);
-    this.corn_ = this.corn_-s;
+    this.corn_ = this.corn_ - s;
   }
 
-  giveGold(s){
+  giveGold(s) {
     this.divinity_.offeringGold(s);
-    this.gold_ = this.gold_-s;
+    this.gold_ = this.gold_ - s;
   }
 
   getCorn() {
@@ -88,9 +88,9 @@ class City {
         this.corn_ += Corn;
         this.cornToSell -= Corn;
       } else {
-        this.corn_ += parseInt(this.gold_/this.goldForCorn);
-        this.cornToSell -= parseInt(this.gold_/this.goldForCorn);
-        this.gold_ -= parseInt(this.gold_/this.goldForCorn) * this.goldForCorn;
+        this.corn_ += parseInt(this.gold_ / this.goldForCorn);
+        this.cornToSell -= parseInt(this.gold_ / this.goldForCorn);
+        this.gold_ -= parseInt(this.gold_ / this.goldForCorn) * this.goldForCorn;
       }
     } else {
       this.gold_ -= this.cornToSell * this.goldForCorn;
@@ -112,8 +112,8 @@ class City {
         }, this.divinity_.timeFactor * 0.001 * qtyOfUnits);
       } else {
         reject(new Error(
-          `you didn't give a number as the quantity of units to add to your 
-          city, ${qtyOfUnits} isn't a number`
+          'you didn't give a number as the quantity of units to add to your
+          city, ${qtyOfUnits} isn't a number'
         ));
       }
     });
@@ -121,7 +121,7 @@ class City {
 
   war(opponent) {
     let x = 0;
-    while(x<opponent){
+    while (x < opponent) {
       this.units[x].fight();
       //this.clearUnitsIfDead();
       x++;

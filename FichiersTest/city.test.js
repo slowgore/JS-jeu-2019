@@ -8,7 +8,7 @@ chai.should();
 describe('City', () => {
   let g;
   before(() => {
-    g = new City("hellyeah");
+    g = new City('hellyeah');
   });
 
   it('should sell corn', async () => {
@@ -17,6 +17,6 @@ describe('City', () => {
 
     await g.sellCorn(100);
     g.getCorn().should.be.equal(900);
-    g.getGold().should.be.equal(1000 + 100 * g.goldForCorn);
+    g.getGold().should.be.equal(1000 + (100 * g.goldForCorn));
   });
 });

@@ -130,7 +130,7 @@ const unitsMenu = async city1 => {
     async answer2 => {
       switch (answer2) {
         case '1':
-          while(true) {
+          while (true) {
             let maxUnitsGold = Math.trunc(city1.getGold() / 100);
             let maxUnitsCorn = Math.trunc(city1.getCorn() / 50);
             let maxUnits = Math.min(maxUnitsCorn, maxUnitsGold);
@@ -150,13 +150,13 @@ const unitsMenu = async city1 => {
           }
           break;
 
-          case '2':
+        case '2':
           // Calcul of opponent
           /*if (city1.units.length >= 2 ) {
             //let opponent = Math.trunc(Math.random() * Math.floor(Number(this.units.length) - 2));*/
-            console.log('War is comming');
-            city1.war(city1.units.length);
-            //city1.clearUnitsIfDead();
+          console.log('War is comming');
+          city1.war(city1.units.length);
+          //city1.clearUnitsIfDead();
           /*} else {
             console.log('There is no opponent in front of you');
             break;
@@ -171,7 +171,7 @@ const unitsMenu = async city1 => {
     });
 };
 
-const game = async (city1,divinity1) => {
+const game = async (city1) => {
   let death = false;
 
   while (!death) {
@@ -218,11 +218,10 @@ const game = async (city1,divinity1) => {
 };
 
 const main = async () => {
-  const divinity1 = new Divinity();
-  const city1 = new City("maison","dieu");
+  const city1 = new City("maison", "dieu");
   city1.init();
-  console.log('long time ago, a city called '+city1.name_+' was created by the god we call ' +city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
-  await game(city1,divinity1);
+  console.log('long time ago, a city called ' + city1.name_ + ' was created by the god we call ' + city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
+  await game(city1);
 };
 
 main();
