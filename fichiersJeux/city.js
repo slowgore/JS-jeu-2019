@@ -4,7 +4,8 @@ const {Units} = require('./units');
 class City {
   constructor(name, divinityName) {
     this.name_ = name || 'UNKCITY';
-    this.divinity_ = new Divinity(divinityName);
+    this.divinityName_ = divinityName|| 'UNKDIVINITY';
+    this.divinity_ = new Divinity(this.divinityName_);
     this.units = [];
     this.corn_ = 1000;
     this.gold_ = 1000;
@@ -30,6 +31,16 @@ class City {
     this.divinity_.offeringGold(this.gold_);
     this.corn_ = 0;
     this.gold_ = 0;
+  }
+
+  giveCorn(s){
+    this.divinity_.offeringCorn(s);
+    this.corn_ = this.corn_-s;
+  }
+
+  giveGold(s){
+    this.divinity_.offeringGold(s);
+    this.gold_ = this.gold_-s;
   }
 
   getCorn() {

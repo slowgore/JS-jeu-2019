@@ -1,6 +1,7 @@
 const prompt = require('node-ask').prompt;
 const confirm = require('node-ask').confirm;
 const {City} = require('./fichiersJeux/city');
+const {Divinity} = require('./fichiersJeux/divinity');
 
 const isNumeric = str => {
   return str.match('-?\\d+(\\.\\d+)?');  //match a number with optional '-' and decimal.
@@ -34,7 +35,7 @@ const tradeMdenu = async city1 => {
             if (b == 1)
               break;
           }
-          // Ajout de fonction city1.sellCorn
+
           break;
         case '2':
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
@@ -59,10 +60,74 @@ const tradeMdenu = async city1 => {
         default:
           break;
       }
-
       return confirm('');
     });
 };
+
+const askDivinityHelp = async city1 => {
+
+  city1.showShit();
+  await prompt('how many things you want to ask him ? : ').then(
+    async answer1 => {
+        city1.getShit(Number(answer1));
+      return confirm('');
+    });
+
+};
+
+const OfferDivinity = async city1 => {
+
+  city1.showShit();
+  console.log('how many things you want to give him ? ');
+  console.log(' \t--> 1 : give corn');
+  console.log(' \t--> 2 : give gold ');
+
+  await prompt('What is your choice ? : ').then(
+    async answer1 => {
+      switch (answer1) {
+        case '1':
+          console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
+          while (true) {
+            await prompt('How many Corn would you like to offer ? : ').then(
+              async answer2 => {
+                if (isNumeric(answer2)) {
+                  city1.giveCorn(Number(answer2));
+                  b = 1;
+                } else {
+                  console.log('Put a Number !');
+                }
+              });
+            if (b == 1)
+              break;
+          }
+          break;
+        case '2':
+          console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
+          while (true) {
+            await prompt('How many Gold would you like to offer ? : ').then(
+              async answer2 => {
+                if (isNumeric(answer2)) {
+                  city1.giveGold(Number(answer2));
+                  b = 1;
+                } else {
+                  console.log('Put a Number !');
+                }
+              });
+            if (b == 1)
+              break;
+          }
+          // Ajout de fonction city1.buyCorn
+          break;
+
+        default:
+          break;
+      }
+      return confirm('');
+    });
+
+
+};
+
 
 const unitsMenu = async city1 => {
   let c = 0;
@@ -121,12 +186,13 @@ const game = async city1 => {
 
   while (!death) {
 
-    console.log('long time ago, a city called '+city1.name_+' was created by the god we call ' +city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
     console.log('- - - - -  - - M E N U - - - - - - - - ');
     console.log('- - - -What\'s your next action ?- - - - ');
     console.log('\t--> 1 : Trade');
     console.log('\t--> 2 : Units');
-    console.log('\t--> 3 : The End');
+    console.log('\t--> 3 : Divinity give offer');
+    console.log('\t--> 4 : Divinity ask offer');
+    console.log('\t--> 5 : The End');
 
     await prompt('What is your choice ? : ').then(
       async answer => {
@@ -142,6 +208,16 @@ const game = async city1 => {
             break;
 
           case '3':
+            console.clear();
+            await OfferDivinity(city1);
+            break;
+
+          case '4':
+            console.clear();
+            await askDivinityHelp(city1);
+            break
+
+          case '5':
             console.log('This is the end');
             // City1.deleteCity();
             death = true;
@@ -157,8 +233,10 @@ const game = async city1 => {
 };
 
 const main = async () => {
+  const divinity1 = new Divinity();
   const city1 = new City("maison","dieu");
   city1.init();
+  console.log('long time ago, a city called '+city1.name_+' was created by the god we call ' +city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
   await game(city1);
 };
 
