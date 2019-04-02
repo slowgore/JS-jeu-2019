@@ -120,6 +120,8 @@ const game = async city1 => {
   let death = false;
 
   while (!death) {
+
+    console.log('long time ago, a city called '+city1.name_+' was created by the god we call ' +city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
     console.log('- - - - -  - - M E N U - - - - - - - - ');
     console.log('- - - -What\'s your next action ?- - - - ');
     console.log('\t--> 1 : Trade');
@@ -155,7 +157,7 @@ const game = async city1 => {
 };
 
 const main = async () => {
-  const city1 = new City();
+  const city1 = new City("maison","dieu");
   city1.init();
   await game(city1);
 };
