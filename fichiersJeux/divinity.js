@@ -6,7 +6,7 @@ class Divinity {
     this.corn_ = 0;
     this.gold_ = 0;
     this.worldEvents_ = new EventEmitter();
-    this.timeFactor_ = timeFactor || 1000;
+    this.timeFactor_ = timeFactor || 10000;
   }
 
   init() {

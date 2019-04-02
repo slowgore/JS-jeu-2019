@@ -64,16 +64,6 @@ const tradeMdenu = async city1 => {
     });
 };
 
-const askDivinityHelp = async city1 => {
-
-  city1.showShit();
-  await prompt('how many things you want to ask him ? : ').then(
-    async answer1 => {
-        city1.getShit(Number(answer1));
-      return confirm('');
-    });
-
-};
 
 const OfferDivinity = async city1 => {
 
@@ -181,7 +171,7 @@ const unitsMenu = async city1 => {
     });
 };
 
-const game = async city1 => {
+const game = async (city1,divinity1) => {
   let death = false;
 
   while (!death) {
@@ -191,14 +181,14 @@ const game = async city1 => {
     console.log('\t--> 1 : Trade');
     console.log('\t--> 2 : Units');
     console.log('\t--> 3 : Divinity give offer');
-    console.log('\t--> 4 : Divinity ask offer');
-    console.log('\t--> 5 : The End');
+    console.log('\t--> 4 : The End');
 
     await prompt('What is your choice ? : ').then(
       async answer => {
 
         switch (answer) {
           case '1':
+            console.clear();
             await tradeMdenu(city1);
             break;
 
@@ -213,11 +203,6 @@ const game = async city1 => {
             break;
 
           case '4':
-            console.clear();
-            await askDivinityHelp(city1);
-            break
-
-          case '5':
             console.log('This is the end');
             // City1.deleteCity();
             death = true;
@@ -237,7 +222,7 @@ const main = async () => {
   const city1 = new City("maison","dieu");
   city1.init();
   console.log('long time ago, a city called '+city1.name_+' was created by the god we call ' +city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
-  await game(city1);
+  await game(city1,divinity1);
 };
 
 main();
