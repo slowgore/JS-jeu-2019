@@ -135,9 +135,9 @@ class City {
   clearUnitsIfDead() {
     const result = this.units.filter(mort => mort.isAlmostDead === false);
     const result2 = this.units.filter(mort => mort.isAlmostDead === true);
-    console.log('tableau unites : '+this.units.length+' valeurs');
-    console.log('result : '+result.length);
-    console.log('result2 : '+result2.length);
+    console.log('tableau unites : ' + this.units.length + ' valeurs');
+    console.log('result : ' + result.length);
+    console.log('result2 : ' + result2.length);
   }
 }
 

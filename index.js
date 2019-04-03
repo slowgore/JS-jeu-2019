@@ -142,7 +142,6 @@ const unitsMenu = async city1 => {
               async answer2 => {
                 if (isNumeric(answer2) && answer2 <= maxUnits) {
                   city1.addUnits(Number(answer2));
-                  console.log('taille des adversaires : '+Math.floor(Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1) + 2));
                   c = 1;
                 } else {
                   console.log('\nPut a Number equal or below : ' + maxUnits);
@@ -180,10 +179,11 @@ const unitsMenu = async city1 => {
 const game = async city1 => {
   let death = false;
   while (!death) {
-    if (Math.random() > 0.1 && city1.units.length != 0) {
-      const opponent1 = Math.floor(Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1) + Math.floor(city1.units.length * 0.4));
+    if (Math.random() > 0.1 && city1.units.length !== 0) {
+      const opponent1 = Math.floor((Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1)) + (Math.floor(city1.units.length * 0.4)));
       city1.war(opponent1);
     }
+
     console.log('- - - - -  - - M E N U - - - - - - - - ');
     console.log('- - - -What\'s your next action ?- - - - ');
     console.log('\t--> 1 : Trade');
