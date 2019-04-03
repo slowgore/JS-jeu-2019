@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "chai-as-promised": "^7.1.1",
-    "node-ask": "^1.0.1"
+    "node-ask": "^1.0.1",
+    "chai": "^4.1.2",
+    "events": "^2.0.0"
   }
 }

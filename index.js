@@ -1,5 +1,5 @@
-const prompt = require('node-ask').prompt;
-const confirm = require('node-ask').confirm;
+const {prompt} = require('node-ask');
+const {confirm} = require('node-ask');
 const {City} = require('./fichiersJeux/city');
 
 const isNumeric = str => {

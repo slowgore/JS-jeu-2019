@@ -111,9 +111,7 @@ class City {
 
           console.log(`You've just create ${qtyOfUnits} units \n`);
         }, this.divinity_.timeFactor * 0.001 * qtyOfUnits);
-      }
-
-      else {
+      } else {
         reject(new Error(
           `You didn't give a number as the quantity of units to add to your
           city, ${qtyOfUnits} isn't a number`
