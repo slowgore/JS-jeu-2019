@@ -88,9 +88,9 @@ class City {
         this.corn_ += Corn;
         this.cornToSell -= Corn;
       } else {
-        this.corn_ += parseInt(this.gold_ / this.goldForCorn);
-        this.cornToSell -= parseInt(this.gold_ / this.goldForCorn);
-        this.gold_ -= parseInt(this.gold_ / this.goldForCorn) * this.goldForCorn;
+        this.corn_ += parseInt((this.gold_ / this.goldForCorn), 10);
+        this.cornToSell -= parseInt((this.gold_ / this.goldForCorn), 10);
+        this.gold_ -= parseInt((this.gold_ / this.goldForCorn), 10) * this.goldForCorn;
       }
     } else {
       this.gold_ -= this.cornToSell * this.goldForCorn;
@@ -108,12 +108,15 @@ class City {
             this.corn_ = this.corn_ - 50;
             this.units.push(new Units());
           }
+
           console.log(`You've just create ${qtyOfUnits} units \n`);
         }, this.divinity_.timeFactor * 0.001 * qtyOfUnits);
-      } else {
+      }
+
+      else {
         reject(new Error(
-          'you didn't give a number as the quantity of units to add to your
-          city, ${qtyOfUnits} isn't a number'
+          `You didn't give a number as the quantity of units to add to your
+          city, ${qtyOfUnits} isn't a number`
         ));
       }
     });
@@ -123,16 +126,13 @@ class City {
     let x = 0;
     while (x < opponent) {
       this.units[x].fight();
-      //this.clearUnitsIfDead();
       x++;
     }
   }
 
-
   clearUnitsIfDead() {
     this.units = this.units.filter(this.units.isDead === false);
   }
-
 }
 
 module.exports = {City};
