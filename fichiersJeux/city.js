@@ -69,7 +69,6 @@ class City {
   }
 
   sellCorn(Corn) {
-    // A mettre dans le index.js if (Corn < this.corn_)
     if (Corn < this.cornToBuy) {
       this.corn_ -= Corn;
       this.gold_ += this.goldForCorn * Corn;
@@ -121,15 +120,24 @@ class City {
   }
 
   war(opponent) {
-    let x = 0;
-    while (x < opponent) {
-      this.units[x].fight();
-      x++;
-    }
+    return new Promise((resolve, reject) => {
+      if (typeof opponent === 'number') {
+        setTimeout(() => {
+          this.units.forEach(this.units.fight());
+        }, (this.divinity_.timeFactor * Math.random() * 4000) + 2000);
+        this.clearUnitsIfDead();
+      } else {
+        reject(new Error(`Erreur : ${opponent} isn't à number`));
+      }
+    });
   }
 
   clearUnitsIfDead() {
-    this.units = this.units.filter(this.units.isDead === false);
+    const result = this.units.filter(mort => mort.isAlmostDead === false);
+    const result2 = this.units.filter(mort => mort.isAlmostDead === true);
+    console.log('tableau unites : '+this.units.length+' valeurs');
+    console.log('result : '+result.length);
+    console.log('result2 : '+result2.length);
   }
 }
 
