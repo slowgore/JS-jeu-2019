@@ -22,6 +22,7 @@ const tradeMdenu = async city1 => {
           console.log('Other city buy : ' + city1.cornToBuy + ' Corn.');
           console.log(city1.goldForCorn.toString() + ' gold for 1 Corn.');
           while (b === 0) {
+            /* eslint-disable-next-line no-await-in-loop */
             await prompt('How many Corn would you like to Sell ? : ').then(
               async answer2 => {
                 if (isNumeric(answer2)) {
@@ -42,6 +43,7 @@ const tradeMdenu = async city1 => {
           console.log('Other city sell : ' + city1.cornToSell + ' Corn');
           console.log(city1.goldForCorn.toString() + ' Gold for 1 Corn');
           while (b === 0) {
+            /* eslint-disable-next-line no-await-in-loop */
             await prompt('How many Corn would you like to buy ? : ').then(
               async answer2 => {
                 if (isNumeric(answer2)) {
@@ -79,6 +81,7 @@ const offerDivinity = async city1 => {
         case '1':
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           while (b === 0) {
+            /* eslint-disable-next-line no-await-in-loop */
             await prompt('How many Corn would you like to offer ? : ').then(
               async answer2 => {
                 if (isNumeric(answer2)) {
@@ -97,6 +100,7 @@ const offerDivinity = async city1 => {
         case '2':
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           while (b === 0) {
+            /* eslint-disable-next-line no-await-in-loop */
             await prompt('How many Gold would you like to offer ? : ').then(
               async answer2 => {
                 if (isNumeric(answer2)) {
@@ -138,6 +142,7 @@ const unitsMenu = async city1 => {
             const maxUnits = Math.min(maxUnitsCorn, maxUnitsGold);
             console.log('You have : ' + city1.units.length + ' warrior');
             console.log('you can create a maximum of : ' + maxUnits + ' Units');
+            /* eslint-disable-next-line no-await-in-loop */
             await prompt('How many Units would you like to buy ? : ').then(
               async answer2 => {
                 if (isNumeric(answer2) && answer2 <= maxUnits) {
@@ -191,6 +196,7 @@ const game = async city1 => {
     console.log('\t--> 3 : Divinity give offer');
     console.log('\t--> 4 : The End');
 
+    /* eslint-disable-next-line no-await-in-loop */
     await prompt('What is your choice ? : ').then(
       async answer => {
         switch (answer) {
