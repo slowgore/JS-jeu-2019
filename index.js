@@ -186,7 +186,7 @@ const game = async city1 => {
   while (!death) {
     city1.clearUnitsIfDead();
 
-    if (Math.random() > 0.1 && city1.units.length !== 0) {
+    if (Math.random() > 0.8 && city1.units.length !== 0) {
       console.log('random opponent arrive in front of you ! be carreful, war is comming');
       const opponent1 = Math.floor((Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1)) + (Math.floor(city1.units.length * 0.4)));
       city1.war(opponent1);
