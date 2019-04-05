@@ -16,8 +16,8 @@ const tradeMdenu = async city1 => {
   await prompt('What is your choice ? : ').then(
     async answer1 => {
       console.log('You have selected option : ' + answer1);
-      switch (answer1) {
-        case '1':
+      switch (true) {
+        case (answer1 === '1' || answer1 === '1\r'):
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           console.log('Other city buy : ' + city1.cornToBuy + ' Corn.');
           console.log(city1.goldForCorn.toString() + ' gold for 1 Corn.');
@@ -38,7 +38,7 @@ const tradeMdenu = async city1 => {
           }
 
           break;
-        case '2':
+        case (answer1 === '2' || answer1 === '2\r'):
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           console.log('Other city sell : ' + city1.cornToSell + ' Corn');
           console.log(city1.goldForCorn.toString() + ' Gold for 1 Corn');
@@ -77,8 +77,8 @@ const offerDivinity = async city1 => {
 
   await prompt('What is your choice ? : ').then(
     async answer1 => {
-      switch (answer1) {
-        case '1':
+      switch (true) {
+        case (answer1 === '1' || answer1 === '1\r'):
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           while (b === 0) {
             /* eslint-disable-next-line no-await-in-loop */
@@ -97,7 +97,7 @@ const offerDivinity = async city1 => {
           }
 
           break;
-        case '2':
+        case (answer1 === '2' || answer1 === '2\r'):
           console.log('You have : ' + city1.getCorn() + ' Corn; ' + city1.getGold() + ' Gold.');
           while (b === 0) {
             /* eslint-disable-next-line no-await-in-loop */
@@ -134,8 +134,8 @@ const unitsMenu = async city1 => {
 
   await prompt('What is your choice ? : ').then(
     async answer2 => {
-      switch (answer2) {
-        case '1':
+      switch (true) {
+        case (answer2 === '1' || answer2 === '1\r'):
           while (c === 0) {
             const maxUnitsGold = Math.trunc(city1.getGold() / 100);
             const maxUnitsCorn = Math.trunc(city1.getCorn() / 50);
@@ -159,7 +159,7 @@ const unitsMenu = async city1 => {
 
           break;
 
-        case '2':
+        case (answer2 === '2' || answer2 === '2\r'):
           if (city1.units.length >= 2) {
             const opponent1 = Math.floor((Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1)) + (Math.floor(city1.units.length * 0.4)));
             console.log('War is comming');
@@ -202,23 +202,23 @@ const game = async city1 => {
     /* eslint-disable-next-line no-await-in-loop */
     await prompt('What is your choice ? : ').then(
       async answer => {
-        switch (answer) {
-          case '1':
+        switch (true) {
+          case (answer === '1' || answer === '1\r') :
             console.clear();
             await tradeMdenu(city1);
             break;
 
-          case '2':
+          case (answer === '2' || answer === '2\r'):
             console.clear();
             await unitsMenu(city1);
             break;
 
-          case '3':
+          case (answer === '3' || answer === '3\r'):
             console.clear();
             await offerDivinity(city1);
             break;
 
-          case '4':
+          case (answer === '4' || answer === '4\r'):
             console.log('This is the end');
             // City1.deleteCity();
             death = true;
