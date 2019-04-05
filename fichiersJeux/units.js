@@ -1,8 +1,9 @@
 class Units {
   constructor() {
+    this.isAlmostDead = false;
+    this.isDamaged = false;
     this.life = setTimeout(() => {
-      this.isDamaged = false;
-      this.isAlmostDead = false;
+      this.isAlmostDead = true;
     }, 15000);
   }
 

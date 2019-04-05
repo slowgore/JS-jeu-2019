@@ -184,6 +184,7 @@ const unitsMenu = async city1 => {
 const game = async city1 => {
   let death = false;
   while (!death) {
+    city1.clearUnitsIfDead();
     if (Math.random() > 0.1 && city1.units.length !== 0) {
       const opponent1 = Math.floor((Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1)) + (Math.floor(city1.units.length * 0.4)));
       city1.war(opponent1);
