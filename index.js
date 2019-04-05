@@ -170,6 +170,7 @@ const unitsMenu = async city1 => {
             console.log('There is no opponent in front of you');
             break;
           }
+
           break;
 
         default:
@@ -203,7 +204,7 @@ const game = async city1 => {
     await prompt('What is your choice ? : ').then(
       async answer => {
         switch (true) {
-          case (answer === '1' || answer === '1\r') :
+          case (answer === '1' || answer === '1\r'):
             console.clear();
             await tradeMdenu(city1);
             break;
