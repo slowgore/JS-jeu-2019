@@ -4,7 +4,7 @@ class Units {
     this.isDamaged = false;
     this.life = setTimeout(() => {
       this.isAlmostDead = true;
-    }, 15000);
+    }, 25000);
   }
 
   get isWounded() {

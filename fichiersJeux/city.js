@@ -123,8 +123,8 @@ class City {
     return new Promise((resolve, reject) => {
       if (typeof opponent === 'number') {
         setTimeout(() => {
-          this.units.forEach(this.units.fight());
-        }, (this.divinity_.timeFactor * Math.random() * 4000) + 2000);
+          this.units.filter(units => units.fight());
+        }, (Math.random() * 4000) + 2000);
         this.clearUnitsIfDead();
       } else {
         reject(new Error(`Erreur : ${opponent} isn't à number`));
