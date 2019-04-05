@@ -133,11 +133,9 @@ class City {
   }
 
   clearUnitsIfDead() {
-    console.log('units : ' + this.units.length);
-    this.units = this.units.filter(function(units) {return units.isAlmostDead === false});
-    console.log('units : ' + this.units.length);
-
-   // this.units=result;
+    this.units = this.units.filter(units => {
+      return units.isAlmostDead === false;
+    });
   }
 }
 

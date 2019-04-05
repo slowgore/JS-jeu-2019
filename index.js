@@ -160,17 +160,16 @@ const unitsMenu = async city1 => {
           break;
 
         case '2':
-          //  Calcul of opponent
-          /*  if (city1.units.length >= 2 ) {
-          //  let opponent = Math.trunc(Math.random() * Math.floor(Number(this.units.length) - 2)); */
-          console.log('War is comming');
-          city1.war(city1.units.length);
-          //  A city1.clearUnitsIfDead();
-          /*
+          if (city1.units.length >= 2) {
+            const opponent1 = Math.floor((Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1)) + (Math.floor(city1.units.length * 0.4)));
+            console.log('War is comming');
+            city1.war(opponent1);
+            city1.clearUnitsIfDead();
+            console.log('units after this war : ' + city1.units.length);
           } else {
             console.log('There is no opponent in front of you');
             break;
-          } */
+          }
           break;
 
         default:
@@ -185,9 +184,12 @@ const game = async city1 => {
   let death = false;
   while (!death) {
     city1.clearUnitsIfDead();
+
     if (Math.random() > 0.1 && city1.units.length !== 0) {
+      console.log('random opponent arrive in front of you ! be carreful, war is comming');
       const opponent1 = Math.floor((Math.random() * (city1.units.length - Math.floor(city1.units.length * 0.4) + 1)) + (Math.floor(city1.units.length * 0.4)));
       city1.war(opponent1);
+      console.log('units after this war : ' + city1.units.length);
     }
 
     console.log('- - - - -  - - M E N U - - - - - - - - ');
