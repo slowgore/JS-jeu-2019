@@ -238,7 +238,7 @@ const game = async city1 => {
 const main = async () => {
   const city1 = new City('house', 'god');
   city1.init();
-  console.log('long time ago, a city called ' + city1.name_ + ' was created by the god we call ' + city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
+  console.log('long time ago, a city called "' + city1.name_ + '" was created by a spirit we call "' + city1.divinityName_ + '" and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
   await game(city1);
 };
 
