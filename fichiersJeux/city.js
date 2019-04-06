@@ -127,7 +127,7 @@ class City {
         }, (Math.random() * 4000) + 2000);
         this.clearUnitsIfDead();
       } else {
-        reject(new Error(`Erreur : ${opponent} isn't à number`));
+        reject(new Error(`Error : ${opponent} isn't à number`));
       }
     });
   }
@@ -136,6 +136,10 @@ class City {
     this.units = this.units.filter(units => {
       return units.isAlmostDead === false;
     });
+  }
+
+  endWorld() {
+    clearInterval(this.divinity_.gaiaInterval_);
   }
 }
 

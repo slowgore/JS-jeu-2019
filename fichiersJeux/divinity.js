@@ -78,10 +78,6 @@ class Divinity {
   get timeFactor() {
     return this.timeFactor_;
   }
-
-  endWorld() {
-    clearInterval(this.gaiaInterval_);
-  }
 }
 
 module.exports = {Divinity};

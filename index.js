@@ -221,21 +221,22 @@ const game = async city1 => {
 
           case (answer === '4' || answer === '4\r'):
             console.log('This is the end');
-            // City1.deleteCity();
+            city1.endWorld();
             death = true;
             break;
 
           default:
-            console.log('Wrong choice, earth collapsed');
+            console.log('Wrong choice, try again !');
         }
-        // Return confirm('');
       }
     );
   }
+
+  console.log('Wrong choice, earth collapsed, try again !');
 };
 
 const main = async () => {
-  const city1 = new City('maison', 'dieu');
+  const city1 = new City('house', 'god');
   city1.init();
   console.log('long time ago, a city called ' + city1.name_ + ' was created by the god we call ' + city1.divinityName_ + ' and he chose you to continue his work and promise to help you in your task if you are worthy ! ');
   await game(city1);
